@@ -6,7 +6,10 @@ class TestClass:
         for i in range(1,len(nums)):
             if nums[i - 1] > 0:
                 nums[i] += nums[i - 1]
-            maxnum = max(maxnum,nums[i])
+            if nums[i] > 0:
+                maxnum = max(maxnum,nums[i])
+            else:
+                maxnum = 0
         return maxnum 
 
 class TestDemo(unittest.TestCase):
@@ -23,13 +26,13 @@ class TestDemo(unittest.TestCase):
     def tes4(self):   
         self.assertEqual(TestClass.maxSubArray([0,1,2]), 3, "test 4 fail")
     def test5(self):   
-        self.assertEqual(TestClass.maxSubArray([-1,-1,-1]), -1, "test 5 fail")
+        self.assertEqual(TestClass.maxSubArray([-1,-1,-1]), 0, "test 5 fail")
     def test6(self):   
         self.assertEqual(TestClass.maxSubArray([1,1,1]), 3, "test 6 fail")
     def test7(self):   
         self.assertEqual(TestClass.maxSubArray([1,2,3]), 6, "test 7 fail")
     def test8(self):   
-        self.assertEqual(TestClass.maxSubArray([-3,-2,-1]), -1, "test 8 fail")
+        self.assertEqual(TestClass.maxSubArray([-3,-2,-1]), 0, "test 8 fail")
         
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
