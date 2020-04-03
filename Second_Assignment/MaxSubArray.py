@@ -4,9 +4,12 @@ def maxSubArray(nums):
     for i in range(1,len(nums)):
         if nums[i - 1] > 0:
             nums[i] += nums[i - 1]
-        maxnum = max(maxnum,nums[i])
+        if nums[i] > 0:
+            maxnum = max(maxnum,nums[i])
+        else:
+            maxnum = 0
     print(maxnum)
-while(1):
-    arr = input("")
-    num = [int(n) for n in arr.split()]    
-    maxSubArray(num)
+    
+arr = input("")
+num = [int(n) for n in arr.split()]    
+maxSubArray(num)
